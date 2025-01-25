@@ -1,7 +1,5 @@
 import 'dart:async';
-import 'dart:js';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newss_app/features/home/home_screen.dart';
 
