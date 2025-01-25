@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newss_app/home/home_screen.dart';
-import 'package:newss_app/moduls/splash_screen/splash_screen.dart';
+import 'package:newss_app/features/home/home_screen.dart';
+import 'package:newss_app/features/splash_screen/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,9 +16,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: SplashScreen.routeName,
       routes: {
-    SplashScreen.routeName: (context) => const SplashScreen(),
-    HomeScreen.routeName: (context) => const HomeScreen(),
-    },
+        SplashScreen.routeName: (context) => const SplashScreen(),
+        HomeScreen.routeName: (context) => const HomeScreen(),
+      },
     );
   }
 }

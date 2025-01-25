@@ -28,6 +28,23 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_bloc:
+  easy_localization:
+  bot_toast:
+  flutter_svg:
+  fluttertoast:
+  pretty_dio_logger:
+  lottie:
+  shared_preferences:
+  injectable:
+  get_it:
+  page_transition:
+  animate_do:
+  skeletonizer:
+  cached_network_image:
+  toastification:
+  intl:
+  flutter_secure_storage:
   flutter:
     sdk: flutter
 
@@ -37,6 +54,10 @@ dependencies:
   cupertino_icons: ^1.0.6
 
 dev_dependencies:
+  build_runner:
+  injectable_generator:
+  flutter_gen_runner:
+  flutter_launcher_icons:
   flutter_test:
     sdk: flutter
 
@@ -57,11 +78,16 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/image/
-  #   - images/a_dot_ham.jpeg
+    - assets/images/
+    - assets/fonts/
+    - assets/icons/
+    - assets/translations/
+
+
+
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
