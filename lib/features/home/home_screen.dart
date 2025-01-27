@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:newss_app/core/constants/assets.gen.dart';
+import 'package:newss_app/core/extensions/context_extension.dart';
+import 'package:newss_app/core/services/date_utils.dart';
 import 'package:newss_app/features/drawer/custom_drawer.dart';
+
+import 'widgets/category_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,30 +25,16 @@ class _HomeScreenState extends State<HomeScreen> {
     var mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: _isSearching
-            ? TextField(
-                controller: _searchController,
-                decoration: InputDecoration(
-                  hintText: "Search...",
-                  border: InputBorder.none,
-                ),
-                autofocus: true,
-              )
-            : Text("Home"),
+        title: const Text(
+          "Home",
+        ),
         centerTitle: true,
         actions: [
           IconButton(
-            icon: Icon(_isSearching ? Icons.close : Icons.search),
-            onPressed: () {
-              setState(() {
-                if (_isSearching) {
-                  _isSearching = false;
-                  _searchController.clear();
-                } else {
-                  _isSearching = true;
-                }
-              });
-            },
+            icon: const Icon(
+              Icons.search,
+            ),
+            onPressed: () {},
           ),
         ],
       ),
@@ -52,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.white,
               ),
@@ -64,260 +55,46 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontWeight: FontWeight.bold),
               ),
             ),
-            CustomDrawer(),
+            const CustomDrawer(),
           ],
         ),
       ),
       body: SingleChildScrollView(
         // Wrap the Column with SingleChildScrollView
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Text(
-                "Good Morning",
-                style: TextStyle(
-                  fontSize: 16,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                DateService.getMessageByData(),
+                style: context.textTheme.bodySmall?.copyWith(
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Here is some News for you!",
-                style: TextStyle(
-                  fontSize: 16,
+              Text(
+                "Here is Some News For You",
+                style: context.textTheme.bodySmall?.copyWith(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
+              const SizedBox(height: 16),
+              CategoryCard(
+                categoryImagePath: Assets.image.generalPng.path,
+                onViewAllTab: () {},
+                viewAllButtonIsRight: true,
+              ),
+              const SizedBox(height: 16),
 
-            Padding(
-              padding: const EdgeInsets.all(25),
-              child: Stack(
-                alignment: Alignment.bottomRight,
-                children: [
-                  Image.asset(
-                    "assets/image/general.jpg",
-                    width: mediaQuery.width,
-                    fit: BoxFit.cover,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Container(
-                      margin: EdgeInsets.all(15),
-                      alignment: Alignment.bottomRight,
-                      height: 50,
-                      width: 150,
-                      child: CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.arrow_back_ios_rounded),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
-                  ),
-                ],
+              CategoryCard(
+                categoryImagePath: Assets.image.buisness.path,
+                onViewAllTab: () {},
+                viewAllButtonIsRight: false,
               ),
-            ),
-            // Adding more images with the same style
-            Padding(
-              padding: const EdgeInsets.all(25),
-              child: Stack(
-                alignment: Alignment.bottomLeft,
-                children: [
-                  Image.asset(
-                    "assets/image/buisn.jpg",
-                    // Replace with your second image path
-                    width: mediaQuery.width,
-                    fit: BoxFit.cover,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Container(
-                      margin: EdgeInsets.all(15),
-                      alignment: Alignment.bottomLeft,
-                      height: 50,
-                      width: 150,
-                      child: CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.arrow_back_ios_rounded),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(25),
-              child: Stack(
-                alignment: Alignment.bottomRight,
-                children: [
-                  Image.asset(
-                    "assets/image/sports.jpg",
-                    // Replace with your third image path
-                    width: mediaQuery.width,
-                    fit: BoxFit.cover,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Container(
-                      margin: EdgeInsets.all(15),
-                      alignment: Alignment.bottomRight,
-                      height: 50,
-                      width: 150,
-                      child: CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.arrow_back_ios_rounded),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(25),
-              child: Stack(
-                alignment: Alignment.bottomLeft,
-                children: [
-                  Image.asset(
-                    "assets/image/technology.jpg",
-                    // Replace with your fourth image path
-                    width: mediaQuery.width,
-                    fit: BoxFit.cover,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Container(
-                      margin: EdgeInsets.all(15),
-                      alignment: Alignment.bottomLeft,
-                      height: 50,
-                      width: 150,
-                      child: CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.arrow_back_ios_rounded),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(25),
-              child: Stack(
-                alignment: Alignment.bottomRight,
-                children: [
-                  Image.asset(
-                    "assets/image/enterm.jpg",
-                    // Replace with your fourth image path
-                    width: mediaQuery.width,
-                    fit: BoxFit.cover,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Container(
-                      margin: EdgeInsets.all(15),
-                      alignment: Alignment.bottomRight,
-                      height: 50,
-                      width: 150,
-                      child: CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.arrow_back_ios_rounded),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(25),
-              child: Stack(
-                alignment: Alignment.bottomLeft,
-                children: [
-                  Image.asset(
-                    "assets/image/Health.jpg",
-                    // Replace with your fourth image path
-                    width: mediaQuery.width,
-                    fit: BoxFit.cover,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Container(
-                      margin: EdgeInsets.all(15),
-                      alignment: Alignment.bottomLeft,
-                      height: 50,
-                      width: 150,
-                      child: CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.arrow_back_ios_rounded),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(25),
-              child: Stack(
-                alignment: Alignment.bottomRight,
-                children: [
-                  Image.asset(
-                    "assets/image/science.jpg",
-                    // Replace with your fourth image path
-                    width: mediaQuery.width,
-                    fit: BoxFit.cover,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Container(
-                      margin: EdgeInsets.all(15),
-                      alignment: Alignment.bottomRight,
-                      height: 50,
-                      width: 150,
-                      child: CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.arrow_back_ios_rounded),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

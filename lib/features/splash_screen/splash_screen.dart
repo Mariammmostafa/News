@@ -1,25 +1,41 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:newss_app/features/home/home_screen.dart';
+import 'package:newss_app/core/constants/assets.gen.dart';
+import 'package:newss_app/core/extensions/context_extension.dart';
+import 'package:newss_app/core/routing/routes.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   static const String routeName = "Splash_Screen";
 
   @override
-  Widget build(BuildContext context) {
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
     Timer(const Duration(seconds: 4), () {
-      Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+      context.goToNamedReplace(Routes.layout);
     });
-    var mediaQuery = MediaQuery.of(context).size;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    log(context.isDark.toString());
     return Scaffold(
-      body: Image.asset(
-        "assets/image/splash.jpg",
-        width: mediaQuery.width,
-        height: mediaQuery.height,
-        fit: BoxFit.cover,
+      body: Center(
+        child: Image.asset(
+          context.isDark
+              ? Assets.icons.splashLogoDark.path
+              : Assets.icons.splashLogoLight.path,
+          height: context.height / 4,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
