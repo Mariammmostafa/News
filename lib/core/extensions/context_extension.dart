@@ -11,10 +11,16 @@ extension ContextExtension on BuildContext {
   TextTheme get textTheme => Theme.of(this).textTheme;
 
   // routes
-  void goBack({Object? arguments}) => Navigator.of(this).pop(arguments);
+  void back({Object? arguments}) => Navigator.of(this).pop(arguments);
 
   Future<void> goToNamed(String route, {Object? arguments}) async =>
       await Navigator.of(this).pushNamed(
+        route,
+        arguments: arguments,
+      );
+
+  Future<void> goToNamedReplace(String route, {Object? arguments}) async =>
+      await Navigator.of(this).pushReplacementNamed(
         route,
         arguments: arguments,
       );
@@ -45,4 +51,6 @@ extension ContextExtension on BuildContext {
         (route) => false,
         arguments: arguments,
       );
+
+  bool get isDark => Theme.of(this).brightness == Brightness.dark;
 }

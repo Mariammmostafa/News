@@ -57,6 +57,7 @@ dev_dependencies:
   build_runner:
   injectable_generator:
   flutter_gen_runner:
+  flutter_gen: ^5.8.0
   flutter_launcher_icons:
   flutter_test:
     sdk: flutter
@@ -115,3 +116,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_gen:
+  output: lib/core/constants
