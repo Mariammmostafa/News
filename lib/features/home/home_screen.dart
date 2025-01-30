@@ -47,12 +47,16 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: BoxDecoration(
                 color: Colors.white,
               ),
-              child: Text(
-                'News App',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+              child: Center(
+                child: Text(
+
+                  'News App',
+                  style: TextStyle(
+
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold, ),
+                ),
               ),
             ),
             const CustomDrawer(),
@@ -74,10 +78,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Text(
-                "Here is Some News For You",
+                "Here is Some News For You!",
                 style: context.textTheme.bodySmall?.copyWith(
                   fontSize: 22,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w100,
                 ),
               ),
               const SizedBox(height: 16),
@@ -89,9 +93,44 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 16),
 
               CategoryCard(
-                categoryImagePath: Assets.image.buisness.path,
+                categoryImagePath: Assets.image.buisn.path,
                 onViewAllTab: () {},
                 viewAllButtonIsRight: false,
+              ),
+              const SizedBox(height: 16),
+
+              CategoryCard(
+                categoryImagePath: Assets.image.sports.path,
+                onViewAllTab: () {},
+                viewAllButtonIsRight: true,
+              ),
+              const SizedBox(height: 16),
+
+              CategoryCard(
+                categoryImagePath: Assets.image.technology.path,
+                onViewAllTab: () {},
+                viewAllButtonIsRight: false,
+              ),
+              const SizedBox(height: 16),
+
+              CategoryCard(
+                categoryImagePath: Assets.image.enterm.path,
+                onViewAllTab: () {},
+                viewAllButtonIsRight: true,
+              ),
+              const SizedBox(height: 16),
+
+              CategoryCard(
+                categoryImagePath: Assets.image.health.path,
+                onViewAllTab: () {},
+                viewAllButtonIsRight: false,
+              ),
+              const SizedBox(height: 16),
+
+              CategoryCard(
+                categoryImagePath: Assets.image.sience.path,
+                onViewAllTab: () {},
+                viewAllButtonIsRight: true,
               ),
             ],
           ),
