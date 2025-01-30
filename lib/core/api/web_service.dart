@@ -6,9 +6,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class WebService {
   final Dio _dio = Dio(
-    BaseOptions(
-      baseUrl: ApiConstants.baseUrl,
-    ),
+    BaseOptions(baseUrl: ApiConstants.baseUrl),
   );
 
   WebService.initialize() {
@@ -26,6 +24,7 @@ class WebService {
         },
       ),
     );
+
     _dio.interceptors.add(
       PrettyDioLogger(
         requestBody: true,

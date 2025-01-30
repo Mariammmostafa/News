@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:newss_app/core/api/endpoints.dart';
-import 'package:newss_app/core/services/web_service.dart';
+import 'package:newss_app/core/api/web_service.dart';
 
 class CategoryNewsRemoteDataSource {
   final WebService _webService;
