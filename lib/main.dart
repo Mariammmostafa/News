@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newss_app/core/api/endpoints.dart';
 import 'package:newss_app/core/routing/app_router.dart';
 import 'package:newss_app/core/api/web_service.dart';
 import 'package:newss_app/core/theme/app_theme.dart';
@@ -15,8 +16,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var webService = WebService.initialize();
-    var categoryNewsRemoteDataSource = CategoryNewsRemoteDataSource(webService);
-    categoryNewsRemoteDataSource.getCategorySources("sports");
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
