@@ -42,24 +42,23 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.black,
         child: ListView(
           padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
+          children: const [
+            DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.white,
               ),
               child: Center(
                 child: Text(
-
                   'News App',
                   style: TextStyle(
-
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold, ),
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
-            const CustomDrawer(),
+            CustomDrawer(),
           ],
         ),
       ),
@@ -91,42 +90,36 @@ class _HomeScreenState extends State<HomeScreen> {
                 viewAllButtonIsRight: true,
               ),
               const SizedBox(height: 16),
-
               CategoryCard(
                 categoryImagePath: Assets.image.buisn.path,
                 onViewAllTab: () {},
                 viewAllButtonIsRight: false,
               ),
               const SizedBox(height: 16),
-
               CategoryCard(
                 categoryImagePath: Assets.image.sports.path,
                 onViewAllTab: () {},
                 viewAllButtonIsRight: true,
               ),
               const SizedBox(height: 16),
-
               CategoryCard(
                 categoryImagePath: Assets.image.technology.path,
                 onViewAllTab: () {},
                 viewAllButtonIsRight: false,
               ),
               const SizedBox(height: 16),
-
               CategoryCard(
                 categoryImagePath: Assets.image.enterm.path,
                 onViewAllTab: () {},
                 viewAllButtonIsRight: true,
               ),
               const SizedBox(height: 16),
-
               CategoryCard(
                 categoryImagePath: Assets.image.health.path,
                 onViewAllTab: () {},
                 viewAllButtonIsRight: false,
               ),
               const SizedBox(height: 16),
-
               CategoryCard(
                 categoryImagePath: Assets.image.sience.path,
                 onViewAllTab: () {},

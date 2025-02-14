@@ -35,6 +35,7 @@ dependencies:
   fluttertoast:
   pretty_dio_logger:
   lottie:
+  dio:
   shared_preferences:
   injectable:
   get_it:
