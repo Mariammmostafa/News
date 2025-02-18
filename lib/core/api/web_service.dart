@@ -9,7 +9,14 @@ class WebService {
     BaseOptions(baseUrl: ApiConstants.baseUrl),
   );
 
-  WebService.initialize() {
+  static WebService? _service;
+
+  static WebService get instance {
+    _service ??= WebService._();
+    return _service!;
+  }
+
+  WebService._() {
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {

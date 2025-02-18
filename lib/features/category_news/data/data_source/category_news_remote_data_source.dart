@@ -10,4 +10,13 @@ class CategoryNewsRemoteDataSource {
   Future<Response> getCategorySources(String category) async {
     return _webService.get(Endpoints.sources);
   }
+
+  Future<Response> getSourceArticles(String sourceId) {
+    return _webService.get(
+      Endpoints.articles,
+      queryParameters: {
+        'sources': sourceId,
+      },
+    );
+  }
 }

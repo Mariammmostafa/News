@@ -15,53 +15,57 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.bottomRight,
-      children: [
-        Image.asset(
-          categoryImagePath,
-          width: context.width,
-          fit: BoxFit.cover,
-        ),
-        Align(
-          alignment: viewAllButtonIsRight
-              ? Alignment.bottomRight
-              : Alignment.bottomLeft,
-          child: Container(
-            margin: const EdgeInsets.all(15),
+    return GestureDetector(
+      onTap: onViewAllTab,
+      child: Stack(
+        alignment: Alignment.bottomRight,
+        children: [
+          Image.asset(
+            categoryImagePath,
+            width: context.width,
+            fit: BoxFit.cover,
+          ),
+          Align(
             alignment: viewAllButtonIsRight
                 ? Alignment.bottomRight
                 : Alignment.bottomLeft,
-            height: 50,
-            width: context.width * 0.40,
-            decoration: BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.circular(25),
-            ),
-            child: Directionality(
-              textDirection:
-                  viewAllButtonIsRight ? TextDirection.rtl : TextDirection.ltr,
-              child: Row(
-                children: [
-                  const CircleAvatar(
-                    radius: 25,
-                    backgroundColor: Colors.white,
-                    child: Icon(Icons.arrow_back_ios_new_rounded),
-                  ),
-                  const SizedBox(width: 16),
-                  Text(
-                    "View All",
-                    style: context.textTheme.bodySmall?.copyWith(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+            child: Container(
+              margin: const EdgeInsets.all(15),
+              alignment: viewAllButtonIsRight
+                  ? Alignment.bottomRight
+                  : Alignment.bottomLeft,
+              height: 50,
+              width: context.width * 0.40,
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: Directionality(
+                textDirection: viewAllButtonIsRight
+                    ? TextDirection.rtl
+                    : TextDirection.ltr,
+                child: Row(
+                  children: [
+                    const CircleAvatar(
+                      radius: 25,
+                      backgroundColor: Colors.white,
+                      child: Icon(Icons.arrow_back_ios_new_rounded),
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 16),
+                    Text(
+                      "View All",
+                      style: context.textTheme.bodySmall?.copyWith(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

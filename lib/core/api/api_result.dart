@@ -1,4 +1,5 @@
 import '../errors/global_error_handler.dart';
+
 sealed class ApiResult<T> {
   const ApiResult();
 

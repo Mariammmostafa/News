@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newss_app/core/constants/assets.gen.dart';
 import 'package:newss_app/core/extensions/context_extension.dart';
+import 'package:newss_app/core/routing/routes.dart';
 import 'package:newss_app/core/services/date_utils.dart';
 import 'package:newss_app/features/drawer/custom_drawer.dart';
 
@@ -86,7 +87,12 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 16),
               CategoryCard(
                 categoryImagePath: Assets.image.generalPng.path,
-                onViewAllTab: () {},
+                onViewAllTab: () {
+                  context.goToNamed(
+                    Routes.categoryNews,
+                    arguments: "general",
+                  );
+                },
                 viewAllButtonIsRight: true,
               ),
               const SizedBox(height: 16),

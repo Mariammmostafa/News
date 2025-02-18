@@ -15,8 +15,10 @@ class GetCategorySourcesResponseBody {
       sources: json["sources"] == null
           ? []
           : List<SourceModel>.from(
-              json["sources"]!.map((x) => SourceModel.fromJson(x))),
+              json["sources"]!.map(
+                (x) => SourceModel.fromJson(x),
+              ),
+            ),
     );
   }
 }
-

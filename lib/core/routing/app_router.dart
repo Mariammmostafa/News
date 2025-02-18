@@ -19,9 +19,10 @@ abstract class AppRouter {
           builder: (context) => const HomeScreen(),
         );
       case Routes.categoryNews:
+        var args = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => const CategoryNewsScreen(
-            categoryName: "",
+          builder: (context) => CategoryNewsScreen(
+            categoryName: args,
           ),
         );
       default:
