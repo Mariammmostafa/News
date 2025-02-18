@@ -1,4 +1,3 @@
-
 abstract class DateService {
   static String getMessageByData() {
     var currentDate = DateTime.now();

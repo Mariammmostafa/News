@@ -7,13 +7,14 @@ class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
 
   @override
-  _CustomDrawerState createState() => _CustomDrawerState();
+  State<CustomDrawer> createState() => _CustomDrawerState();
 }
 
 class _CustomDrawerState extends State<CustomDrawer> {
-  bool _isLightTheme = true;
   String _selectedLanguage = 'en';
+
   late MainCubit _mainCubit;
+
   @override
   void initState() {
     super.initState();
@@ -66,7 +67,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
               children: [
                 const Text(
                   'Light Theme',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
                 ),
                 CupertinoSwitch(
                   value: !_mainCubit.isDark,
@@ -79,9 +83,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ],
             ),
           ),
-          const SizedBox(
-            height: 30,
-          ),
+          const SizedBox(height: 32),
           const Padding(
             padding: EdgeInsets.all(10),
             child: Row(
@@ -103,7 +105,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
           ),
           const SizedBox(
-            height: 10,
+            height: 16,
           ),
           Container(
             decoration: BoxDecoration(
@@ -120,7 +122,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
               children: [
                 const Text(
                   'Language',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
                 ),
                 CupertinoButton(
                   onPressed: () async {
@@ -151,7 +156,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       });
                     }
                   },
-                  child: Text(_selectedLanguage == 'en' ? 'English' : 'Arabic'),
+                  child: Text(
+                    _selectedLanguage == 'en' ? 'English' : 'Arabic',
+                  ),
                 ),
               ],
             ),
