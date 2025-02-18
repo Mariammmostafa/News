@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newss_app/core/constants/assets.gen.dart';
 import 'package:newss_app/core/extensions/context_extension.dart';
@@ -14,7 +13,7 @@ class HomeScreen extends StatefulWidget {
   static const String routeName = "HomeScreen";
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -30,10 +29,12 @@ class _HomeScreenState extends State<HomeScreen> {
           "Home",
         ),
         centerTitle: true,
+        leading: const LeadingIcon(),
         actions: [
           IconButton(
-            icon: const Icon(
+            icon: Icon(
               Icons.search,
+              color: context.isDark ? Colors.white : Colors.black,
             ),
             onPressed: () {},
           ),
@@ -98,43 +99,92 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 16),
               CategoryCard(
                 categoryImagePath: Assets.image.buisn.path,
-                onViewAllTab: () {},
+                onViewAllTab: () {
+                  context.goToNamed(
+                    Routes.categoryNews,
+                    arguments: "business",
+                  );
+                },
                 viewAllButtonIsRight: false,
               ),
               const SizedBox(height: 16),
               CategoryCard(
                 categoryImagePath: Assets.image.sports.path,
-                onViewAllTab: () {},
+                onViewAllTab: () {
+                  context.goToNamed(
+                    Routes.categoryNews,
+                    arguments: "sports",
+                  );
+                },
                 viewAllButtonIsRight: true,
               ),
               const SizedBox(height: 16),
               CategoryCard(
                 categoryImagePath: Assets.image.technology.path,
-                onViewAllTab: () {},
+                onViewAllTab: () {
+                  context.goToNamed(
+                    Routes.categoryNews,
+                    arguments: "technology",
+                  );
+                },
                 viewAllButtonIsRight: false,
               ),
               const SizedBox(height: 16),
               CategoryCard(
                 categoryImagePath: Assets.image.enterm.path,
-                onViewAllTab: () {},
+                onViewAllTab: () {
+                  context.goToNamed(
+                    Routes.categoryNews,
+                    arguments: "entertainment",
+                  );
+                },
                 viewAllButtonIsRight: true,
               ),
               const SizedBox(height: 16),
               CategoryCard(
                 categoryImagePath: Assets.image.health.path,
-                onViewAllTab: () {},
+                onViewAllTab: () {
+                  context.goToNamed(
+                    Routes.categoryNews,
+                    arguments: "health",
+                  );
+                },
                 viewAllButtonIsRight: false,
               ),
               const SizedBox(height: 16),
               CategoryCard(
                 categoryImagePath: Assets.image.sience.path,
-                onViewAllTab: () {},
+                onViewAllTab: () {
+                  context.goToNamed(
+                    Routes.categoryNews,
+                    arguments: "science",
+                  );
+                },
                 viewAllButtonIsRight: true,
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class LeadingIcon extends StatelessWidget {
+  const LeadingIcon({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(
+        Icons.menu,
+        color: context.isDark ? Colors.white : Colors.black,
+      ),
+      onPressed: () {
+        Scaffold.of(context).openDrawer();
+      },
     );
   }
 }

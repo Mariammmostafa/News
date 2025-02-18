@@ -6,8 +6,20 @@ abstract class AppTheme {
     scaffoldBackgroundColor: AppColors.white,
     useMaterial3: true,
     brightness: Brightness.light,
+    drawerTheme: const DrawerThemeData(
+      backgroundColor: AppColors.white,
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        foregroundColor: AppColors.black,
+      ),
+    ),
+    iconTheme: const IconThemeData(
+      color: AppColors.black,
+    ),
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.white,
+      foregroundColor: AppColors.black,
     ),
     textTheme: const TextTheme(
       bodySmall: TextStyle(
@@ -24,6 +36,15 @@ abstract class AppTheme {
     brightness: Brightness.dark,
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.black,
+      foregroundColor: AppColors.white,
+    ),
+    iconTheme: const IconThemeData(
+      color: AppColors.black,
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        foregroundColor: AppColors.black,
+      ),
     ),
     textTheme: const TextTheme(
       bodySmall: TextStyle(

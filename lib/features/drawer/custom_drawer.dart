@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:newss_app/core/cubit/main_cubit/main_cubit.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
@@ -11,6 +13,12 @@ class CustomDrawer extends StatefulWidget {
 class _CustomDrawerState extends State<CustomDrawer> {
   bool _isLightTheme = true;
   String _selectedLanguage = 'en';
+  late MainCubit _mainCubit;
+  @override
+  void initState() {
+    super.initState();
+    _mainCubit = BlocProvider.of<MainCubit>(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +48,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
@@ -52,29 +60,29 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ),
               borderRadius: BorderRadius.circular(25),
             ),
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Light Theme',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
                 CupertinoSwitch(
-                  value: _isLightTheme,
+                  value: !_mainCubit.isDark,
                   onChanged: (value) {
-                    setState(() {
-                      _isLightTheme = value;
-                    });
+                    _mainCubit.changeAppTheme();
+                    Scaffold.of(context).closeDrawer();
+                    setState(() {});
                   },
                 ),
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(10),
             child: Row(
               children: [
@@ -94,7 +102,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
@@ -106,11 +114,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ),
               borderRadius: BorderRadius.circular(25),
             ),
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Language',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
@@ -119,16 +127,16 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     String? newLanguage = await showCupertinoDialog<String>(
                       context: context,
                       builder: (context) => CupertinoAlertDialog(
-                        title: Text('Choose Language'),
+                        title: const Text('Choose Language'),
                         actions: <Widget>[
                           CupertinoDialogAction(
-                            child: Text('English'),
+                            child: const Text('English'),
                             onPressed: () {
                               Navigator.pop(context, 'en');
                             },
                           ),
                           CupertinoDialogAction(
-                            child: Text('Arabic'),
+                            child: const Text('Arabic'),
                             onPressed: () {
                               Navigator.pop(context, 'ar');
                             },

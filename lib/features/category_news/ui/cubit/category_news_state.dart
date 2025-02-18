@@ -5,7 +5,10 @@ abstract class CategoryNewsState {}
 
 final class CategoryNewsInitial extends CategoryNewsState {}
 
-final class CategoryNewsLoadded extends CategoryNewsState {}
+final class CategoryNewsLoadded extends CategoryNewsState {
+
+  CategoryNewsLoadded();
+}
 
 final class CategoryNewsFailuer extends CategoryNewsState {
   final String message;

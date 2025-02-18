@@ -23,7 +23,15 @@ class CategoryNewsScreen extends StatelessWidget {
         ),
       )..loadSources(categoryName),
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Text(
+            "$categoryName",
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+        ),
         body: BlocBuilder<CategoryNewsCubit, CategoryNewsState>(
           builder: (context, state) {
             if (state is CategoryNewsInitial) {

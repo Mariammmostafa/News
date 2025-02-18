@@ -49,7 +49,10 @@ class CategoryCard extends StatelessWidget {
                     const CircleAvatar(
                       radius: 25,
                       backgroundColor: Colors.white,
-                      child: Icon(Icons.arrow_back_ios_new_rounded),
+                      child: Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        color: Colors.black,
+                      ),
                     ),
                     const SizedBox(width: 16),
                     Text(

@@ -46,6 +46,7 @@ dependencies:
   toastification:
   intl:
   flutter_secure_storage:
+  timeago:
   flutter:
     sdk: flutter
 
